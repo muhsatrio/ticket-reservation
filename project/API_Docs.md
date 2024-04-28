@@ -7,7 +7,7 @@
 Seeds random events
 
 ### Path
-POST `/api/events/seed?number=(number of event)`
+POST `/api/events?number=(number of event)`
 
 ### Response
 
@@ -23,7 +23,7 @@ HTTP Status 201
 Get events
 
 ### Path
-GET `/api/events/sort=?(TRUE/FALSE)`
+GET `/api/events`
 
 ### Response
 
@@ -31,15 +31,74 @@ HTTP Status 200
 ```
 [
     {
-        "id": "4f212d31-2581-43ac-87b1-28d5d89c0e0d",
-        "name": "Event 1",
-        "eventDate": "2024-04-04 04:04:04"
+        "id": "22b9e43a-5739-45b1-8ec3-a879dbe785cd",
+        "name": "Event 527",
+        "eventDate": "2025-09-10T17:00:00.000+00:00",
+        "qty": 100000,
+        "saleEvents": []
     },
     {
-        "id": "76fc8215-0d9d-4676-af06-69583a5ebeef",
-        "name": "2024-04-03 04:04:04"
+        "id": "3bfadae9-0dcd-441a-acad-57d4b268d7c6",
+        "name": "Event 26",
+        "eventDate": "2025-05-13T17:00:00.000+00:00",
+        "qty": 100000,
+        "saleEvents": [
+            {
+                "id": "c1392fa2-a9ae-45db-acb5-94d54c34ee21",
+                "startDate": "2024-02-02T00:00:00.000+00:00",
+                "endDate": "2024-02-02T00:00:00.000+00:00",
+                "qty": 50000
+            },
+            {
+                "id": "8512f2c1-fb65-4359-9c73-fb6dd5fcb95b",
+                "startDate": "2024-02-02T02:02:02.000+00:00",
+                "endDate": "2024-02-02T02:02:02.000+00:00",
+                "qty": 50000
+            }
+        ]
     }
 ]
+```
+
+## Create Sale Event
+
+### Description
+
+Get events
+
+### Path
+POST `/api/saleEvents`
+
+### Request
+
+```
+{
+    "eventId": "4f212d31-2581-43ac-87b1-28d5d89c0e0d",
+    "startDate": "2024-04-04 04:04:04",
+    "endDate": "2024-04-04 04:04:04",
+    "qty": 100 
+}
+```
+
+### Response
+
+HTTP Status 201
+```
+(no content)
+```
+
+HTTP Status 404
+```
+{
+    "message": "eventId not found"
+}
+```
+
+HTTP Status 400
+```
+{
+    "message": "qty has reached the maximum limit for eventId"
+}
 ```
 
 
@@ -50,7 +109,7 @@ HTTP Status 200
 Create order ticket reservation 
 
 ### Path
-POST `/api/order`
+POST `/api/orders`
 
 ### Request
 
@@ -58,18 +117,17 @@ POST `/api/order`
 {
     "email": "user@mail.com",
     "phone": "user@mail.com",
-    "eventId": "fa6b78aa-b8b2-4627-bbfc-9fa1da9492ba",
     "saleEventid": "77ed711d-baa5-4d72-b461-6648fc777537",
     "identities": [
         {
             "name": "John Doe 1",
-            "identity_number": 123456,
-            "identity_type": "KTP"
+            "identityNumber": 123456,
+            "identityType": "KTP"
         },
         {
             "name": "John Doe 1",
-            "identity_number": 123456,
-            "identity_type": "PASSPORT"
+            "identityNumber": 123456,
+            "identityType": "PASSPORT"
         }
     ],
     "orderDate": "2024-04-04 16:24"
@@ -93,7 +151,7 @@ HTTP Status 201
 Get order ticket reservation 
 
 ### Path
-GET `/api/order/{id}`
+GET `/api/orders/{id}`
 
 ### Response
 
@@ -130,7 +188,7 @@ HTTP Status 200
 Update order ticket reservation status 
 
 ### Path
-PATCH `/api/order/:id/status`
+PATCH `/api/orders/:id/status`
 
 ### Request
 ```
