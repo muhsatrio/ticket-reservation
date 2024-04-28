@@ -102,14 +102,14 @@ HTTP Status 400
 ```
 
 
-## Create Order
+## Create Transaction
 
 ### Description
 
-Create order ticket reservation 
+Create transaction ticket reservation 
 
 ### Path
-POST `/api/orders`
+POST `/api/transactions`
 
 ### Request
 
@@ -144,14 +144,14 @@ HTTP Status 201
 }
 ```
 
-## Find Order
+## Find Transaction
 
 ### Description
 
-Get order ticket reservation 
+Get transaction ticket reservation 
 
 ### Path
-GET `/api/orders/{id}`
+GET `/api/transactions/{id}`
 
 ### Response
 
@@ -160,10 +160,6 @@ HTTP Status 200
 {
     "email": "user@mail.com",
     "phone": "user@mail.com",
-    "event": {
-        "name": "Event 1",
-        "date": "2020-02-02 02:02:02"
-    }
     "identities": [
         {
             "name": "John Doe 1",
@@ -177,18 +173,19 @@ HTTP Status 200
         }
     ],
     "orderDate": "2024-04-04 16:24",
-    "status": "PAID"
+    "status": "PAID",
+    "totalPayment": 20000
 }
 ```
 
-## Update Order Status
+## Update Transaction Status
 
 ### Description
 
-Update order ticket reservation status 
+Update transaction ticket reservation status 
 
 ### Path
-PATCH `/api/orders/:id/status`
+PATCH `/api/transactions/:id`
 
 ### Request
 ```
@@ -198,7 +195,7 @@ PATCH `/api/orders/:id/status`
 ```
 
 ### Notes
-- `status` between `PAID`/`REJECTED`
+- `status` between `APPROVED`/`REJECTED`
 
 ### Response
 
