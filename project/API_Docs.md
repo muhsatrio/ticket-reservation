@@ -190,7 +190,7 @@ PATCH `/api/transactions/:id`
 ### Request
 ```
 {
-    "status": "PAID"
+    "status": "APPROVED"
 }
 ```
 
