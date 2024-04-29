@@ -173,7 +173,7 @@ HTTP Status 200
         }
     ],
     "orderDate": "2024-04-04 16:24",
-    "status": "PAID",
+    "status": "APPROVED",
     "totalPayment": 20000
 }
 ```
