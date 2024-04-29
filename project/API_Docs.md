@@ -76,7 +76,8 @@ POST `/api/saleEvents`
     "eventId": "4f212d31-2581-43ac-87b1-28d5d89c0e0d",
     "startDate": "2024-04-04 04:04:04",
     "endDate": "2024-04-04 04:04:04",
-    "qty": 100 
+    "qty": 100,
+    "price": 1150000
 }
 ```
 
@@ -129,8 +130,7 @@ POST `/api/transactions`
             "identityNumber": 123456,
             "identityType": "PASSPORT"
         }
-    ],
-    "orderDate": "2024-04-04 16:24"
+    ]
 }
 ```
 
